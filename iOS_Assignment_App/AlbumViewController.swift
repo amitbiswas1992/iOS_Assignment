@@ -11,6 +11,7 @@ import UIKit
 class AlbumViewController: UIViewController {
 
     var artist = ["Amit", "Suman"]
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -41,6 +42,12 @@ extension AlbumViewController :  UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let showDetails: AlbumDetailsViewController = self.storyboard?.instantiateViewController(identifier: "AlbumDetailsViewController") as! AlbumDetailsViewController
+        
+        self.navigationController?.pushViewController(showDetails, animated: true)
+    }
     
     
 }
