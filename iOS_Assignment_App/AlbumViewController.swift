@@ -65,7 +65,7 @@ extension AlbumViewController {
     
      func getArtist( completed: @escaping ([Artist], Error )-> Void) {
             
-            let url = URL(string: "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/10/explicit.json")!
+            let url = URL(string: "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/50/explicit.json")!
             
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let _ = error {
@@ -87,6 +87,9 @@ extension AlbumViewController {
                    // let decoder = JSONDecoder()
                     let result = try JSONDecoder().decode(Artist?.self, from: data)
                     self.artist = result
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                    print("Success request")
                     print(result)
                 }
