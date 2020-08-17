@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Feed: Codable {
+struct Artist: Codable {
     let feed: FeedClass
 }
 

@@ -18,6 +18,15 @@ class AlbumTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func bind(result: Result) {
+           let url = URL(string: result.artworkUrl100)
+           let data = try? Data(contentsOf: url!)
+        self.albumLabel.text = result.name
+        self.artistLabel.text = result.artistName
+        self.imageLabel.image = UIImage(data: data!)
+          
+       }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
